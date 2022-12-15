@@ -13,14 +13,15 @@ function UserProfilePage({
 
      useEffect(()=> {
         if(!isLoggedIn && !isLoading) navigate("/login");
-    }, [isLoading, isLoggedIn]); 
+    }, [isLoading, isLoggedIn, navigate]); 
 
     return(
         <>
     <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} setUserInformation= {setUserInformation}/> 
             <div className="PageWrapper">
             <h1> User Profile</h1>
-            <p><strong> Display Name: </strong>{userInformation.displayName}</p>            <p><strong> Email: </strong>{userInformation.email}</p>
+            <p><strong> Display Name: </strong>{userInformation.displayName}</p>    
+            <p><strong> Email: </strong>{userInformation.email}</p>
         </div>  
         <div></div>
         </>
