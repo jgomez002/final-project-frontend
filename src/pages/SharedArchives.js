@@ -13,7 +13,7 @@ function SharedArchives({
 
      useEffect(()=> {
         if(!isLoggedIn && !isLoading) navigate("/login");
-    }, [isLoading, isLoggedIn]); 
+    }, [isLoading, isLoggedIn, navigate]); 
 
     return(
         <>
