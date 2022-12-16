@@ -30,33 +30,6 @@ function Feed({
         if(!isLoggedIn && !isLoading) navigate("/login");
     }, [isLoading, isLoggedIn, navigate]); 
 
-    // const queryData = async (app) => {
-    //     if (!app) return [];
-    //     const db = getFirestore(app);
-    //     const data = [];
-    //     const querySnapshot = await getDocs(collection(db, "posts"));
-    //     querySnapshot.forEach((doc) => {
-    //         data.push(doc.data());
-    //     });
-    //     return data;
-    // };
-
-    // useEffect(() => {
-    //     if(!app) return;
-    //     queryData(app).then(setPostData);
-    // }, [app]);
-     
-    // const postData= useMemo(async()=>{
-    //     if(!app) return [];
-    //     const db  = getFirestore(app);
-    //     const querySnapshot = await getDocs(collection(db, "post"));
-    //     const data = []
-    //     querySnapshot.forEach((doc) => {
-    //     data.push(doc.data())
-    //     });
-    //      return data;
-    // },[app] );
-
     useEffect(() => {
         if(!app) return;
         queryData(app).then(setPostData);

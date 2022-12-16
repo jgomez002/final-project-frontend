@@ -54,8 +54,6 @@ const app = initializeApp(firebaseConfig);
     }
   },[appInitialized]);
 
-  console.log({userInformation});
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -106,14 +104,14 @@ const app = initializeApp(firebaseConfig);
     },
     {
       path: "/create-post",
-      element: <CreatePost 
+      element: <CreatePost  
       app= {appInitialized}
       isLoggedIn= {isLoggedIn}
-      isLoading = {isLoading}
+      isLoading= {isLoading}
       userInformation= {userInformation}
       setIsLoggedIn={setIsLoggedIn}
       setUserInformation={setUserInformation}
-        />,
+      />,
     },
   ]);
 

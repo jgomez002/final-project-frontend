@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useCallback,useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CreatePostForm from "../components/CreatePostForm";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import {getStorage, ref, getDownloadURL} from "firebase/storage"
+
 
 function CreatePost({
+    app,
     isLoading, 
     isLoggedIn, 
     userInformation, 
@@ -11,6 +15,78 @@ function CreatePost({
     setUserInformation}) {
        
     const navigate = useNavigate();
+    const [postSucessful, setPostSucessful] = useState(false);
+    
+   
+    const createPost= useCallback(
+        async (e) => {
+            e.preventDefault();
+            const db = getFirestore(app);
+            const storage = getStorage(app)           
+
+            // const fileToUpload = () => {
+            //     if (fileToUpload == null) return;
+            //     const fileRef = ref(storage, `${fileToUpload.name()}`);
+            // };
+
+
+            const caption = e.currentTarget.caption.value;
+            const imageAlt = ""//e.currentTarget.imageAlt.value;
+            const userName = userInformation.displayName;
+            const userId = userInformation.uid;
+            const date = ""//e.currentTarget.date.value;
+            const imageSrc = ""//e.currentTarget.date.value;
+            const videoSrc = ""//e.currentTarget.date.value;
+            const fileUpload = e.currentTarget.fileUpload.files[0];
+            const fileRef = ref(storage, `${fileUpload.name}`);
+         
+
+            try {
+            //    await uploadBytes(fileRef, fileUpload).then(()=> {
+            //         alert("OMGG")
+            //     });
+
+            await getDownloadURL(ref(fileRef))
+            .then((url) => {
+              // `url` is the download URL for 'images/stars.jpg'
+          
+              // This can be downloaded directly:
+              const xhr = new XMLHttpRequest();
+              xhr.responseType = 'blob';
+              xhr.onload = (event) => {
+                const blob = xhr.response;
+              };
+              xhr.open('GET', url);
+              xhr.send();
+              alert("OMGGG")
+          
+            })
+            .catch((error) => {
+              // Handle any errors
+            });
+
+            
+
+
+                const docRef = await addDoc(collection(db, "posts"), {
+                    caption, 
+                    imageAlt, 
+                    userId,
+                    userName,
+                    date,
+                    imageSrc: fileUpload.name,
+                    videoSrc,
+                    
+               
+                });
+                console.log("Document written with ID: ", docRef.id);
+                setPostSucessful(true);
+            } catch (e) {
+                console.error("Error adding document, ", e);
+            }
+    }, [app, userInformation]);
+
+    console.log(userInformation)
     
     useEffect(() => {
         if(!isLoggedIn && !isLoading) return navigate('/login');
@@ -21,10 +97,16 @@ function CreatePost({
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserInformation= {setUserInformation}/> 
         <div className="Post-wrapper">
             <h1>Create Post</h1>
-            <CreatePostForm/>
+            <CreatePostForm createPost={createPost}/>
+            {postSucessful && <p>Yay, look at ur profile for new post!</p>}
         </div>
         </>
     );
 }
 
 export default CreatePost;
+
+// useEffect(()=>{
+//     const storage = getStorage(app)
+//       setgetStorage(storage);
+//   },[]);
