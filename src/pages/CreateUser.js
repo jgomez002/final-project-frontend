@@ -2,8 +2,8 @@ import React, {useCallback,useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import CreateUserForm from "../components/CreateUserForm";
-import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import backgroundVideo from "../bgVid.mp4"
 
 
 
@@ -54,12 +54,19 @@ createUserWithEmailAndPassword(auth,email, password)
 
 return(
     <>
-    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserInformation= {setUserInformation}/> 
-    <div className="PageWrapper">
+     <div>
+    <video autoPlay loop mute className="loginPage-backgroundVideo" preload="auto">
+        <source src={backgroundVideo} type='video/mp4' />
+    </video>
+    </div>
+
+    <div className="PageWrapper PageWrapper-Login">
         <h1> Create User</h1>
+        <div className="formElement">
         <CreateUserForm signUpUser={signUpUser} /> 
         <p>{errors}</p>
         <Link to="/login"> Login </Link>
+        </div>
     </div>
     </>
 );

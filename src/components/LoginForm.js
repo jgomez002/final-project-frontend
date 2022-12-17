@@ -4,7 +4,7 @@ function LoginForm({loginUser}){
     return (
         <form className="FormElement" onSubmit={(e)=> loginUser(e)}> 
             <div className="FormElement-login">
-            <label htmlFor="email">User Name </label>
+            <label htmlFor="email">Email </label>
             <input type="text" name ="email" /> 
             </div>
             <div className="FormElement-login">
