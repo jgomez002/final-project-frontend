@@ -42,16 +42,13 @@ function Feed({
         <>
     <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} setUserInformation= {setUserInformation}/> 
             <div className="PageWrapper">
-            <h1> Feed: Where users will access following/friends feed</h1>
-            <p><strong> Display Name: </strong>{userInformation.displayName}</p>
-            <p><strong> Email: </strong>{userInformation.email}</p>
             {postData.map((post,index) => (
             <div className="Post-wrapper postFrame">
             <PostForm
             caption={post.caption}
-            imageAlt={post.imageAlt}
+            // imageAlt={post.imageAlt}
             imageSrc={post.imageSrc}
-            videoSrc={post.videoSrc}
+            // videoSrc={post.videoSrc}
             date={post.date}
             userName={post.userName}
             />

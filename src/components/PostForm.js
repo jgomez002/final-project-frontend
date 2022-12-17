@@ -1,17 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
 
-function PostForm({caption, userId, userName, imageSrc, imageAlt, videoSrc, date }) {
+
+
+function PostForm({caption, userId, userName, imageSrc, date }) {
+    // working image / file upload code
+    // const [fileUploaded, setfileUploaded] = useState();
+
+    // useEffect(() => {
+    //     const storage = getStorage();
+    //     getDownloadURL(ref(storage, "images/" +fileSrc))
+    //     .then((url) => {
+    //         setfileUploaded(url);
+    //     });
+        
+    // },[fileSrc]);
     return(
         <>
         <div className="Post">
-            <img src={imageSrc} alt={imageAlt}/>
-            <video src={videoSrc}/>
-            <p>{videoSrc}</p>
+            {/* <img src={fileUploaded}/> */}
+            <p>Insert "{imageSrc}" Here</p>
             <p className="Caption">{caption}</p>
-            <p className="Date">{date}</p>
-            <p> @{" "} 
-            <Link to={`user/${userId}`}>{userName}</Link></p>
+            <p className="Date">Archived: <b> {date}</b></p>
+            <p> @{userName}</p>
         </div>
         </>
     );

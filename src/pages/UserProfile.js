@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 function UserProfilePage({
     isLoading,
@@ -24,8 +25,9 @@ function UserProfilePage({
             <p><strong> Email: </strong>{userInformation.email}</p>
             <br></br>
             <div>
-            <p><strong>Your Post</strong>
-            {userInformation.password}</p>
+            <p><strong> <Link to="/create-post"> Create Archive(s) </Link></strong>
+
+           </p>
             </div>
         </div>  
         <div></div>

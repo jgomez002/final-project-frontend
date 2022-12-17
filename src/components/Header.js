@@ -17,8 +17,8 @@ function Header({isLoggedIn, setIsLoggedIn, setUserInformation}){
 
     return(
         <header>
-        <nav>
-
+          <h3 style={{textAlign:"left"}}>The Archive(s)</h3>
+        <nav className="header">
             {!isLoggedIn && (<Link to ="/login">
               <p> Login</p>
             </Link>

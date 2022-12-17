@@ -7,7 +7,6 @@ import "./App.css";
 import CreateUserPage from "./pages/CreateUser";
 import LoginPage from "./pages/Login";
 import UserProfilePage from "./pages/UserProfile";
-import SharedArchives from "./pages/SharedArchives";
 import CreatePost from "./pages/CreatePost"
 import Feed from "./pages/Feed";
 
@@ -81,16 +80,7 @@ const app = initializeApp(firebaseConfig);
         isLoggedIn= {isLoggedIn}
         />,
     },
-    {
-      path: "/shared-archives",
-      element: <SharedArchives 
-      isLoading={isLoading}
-      setIsLoggedIn={setIsLoggedIn}
-      setUserInformation={setUserInformation}
-      isLoggedIn= {isLoggedIn}
-      userInformation={userInformation}
-        />,
-    },
+  
     {
       path: "/feed",
       element: <Feed 

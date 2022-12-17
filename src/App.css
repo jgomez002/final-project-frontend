@@ -2,6 +2,15 @@
  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+Link:visited{
+color:black;
+}
+
+.bgImg{
+  background-image: url("https://media.istockphoto.com/id/1220913372/photo/white-paper-background.jpg?s=170667a&w=0&k=20&c=7273Uns8j45l014c--J76VVaus0BkST1lQhhe9o398Y=");
+
+}
+
 header {
   border-bottom: 1px solid black; 
   display:flex; 
@@ -38,11 +47,10 @@ header {
   margin-bottom: 30px;
   padding: 10px;
 }
-
-
-@keyframes colorChange {
-  from {left: -250px;}
-  to {left: 250px;}
+.header{
+  align-items: center;
+  justify-content:end;
+  margin: 0 0 0 auto;
 }
 
 nav { 
@@ -116,9 +124,9 @@ nav p {
 }
 
 .Post{
-  border: 2px solid black;
   padding: 25px;
   margin: 15px;
-  width: 35%;
+  width: 75%;
+  height: 75%;
 
 }

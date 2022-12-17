@@ -1,6 +1,9 @@
 import React from "react"
 
+
 function CreatePostForm({createPost}){
+ 
+    
     return (
         <form className="FormElement" onSubmit={(e)=> createPost(e)}>
             <label htmlFor="caption">Caption</label>
@@ -15,6 +18,7 @@ function CreatePostForm({createPost}){
             name ="fileUpload"
             multiple="multiple" 
             /> 
+
             
 
             <button type="submit">Submit</button> 
