@@ -46,7 +46,7 @@ function Feed({
             <p><strong> Display Name: </strong>{userInformation.displayName}</p>
             <p><strong> Email: </strong>{userInformation.email}</p>
             {postData.map((post,index) => (
-            <div className="Post-wrapper">
+            <div className="Post-wrapper postFrame">
             <PostForm
             caption={post.caption}
             imageAlt={post.imageAlt}

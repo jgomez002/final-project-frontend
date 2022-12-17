@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CreatePostForm from "../components/CreatePostForm";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage"
+import {getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable} from "firebase/storage"
 import { async } from "@firebase/util";
 
 
@@ -43,9 +43,9 @@ function CreatePost({
        
     const navigate = useNavigate();
     const [postSucessful, setPostSucessful] = useState(false);
-    //for file upload
-    const [fileUrls, setFileUrls]= useState([]); 
-    const [fileUpload, setFileUpload] =useState(null)
+    // //for file upload
+    // const [fileUrls, setFileUrls]= useState([]); 
+    // const [fileUpload, setFileUpload] =useState(null)
 
   
 
@@ -111,10 +111,9 @@ function CreatePost({
 
 
             const caption = e.currentTarget.caption.value;
-            const imageAlt = ""//e.currentTarget.imageAlt.value;
             const userName = userInformation.displayName;
             const userId = userInformation.uid;
-            const date = ""//e.currentTarget.date.value;
+            const date = e.currentTarget.date.value;
             const imageSrc = ""//e.currentTarget.date.value;
             const videoSrc = ""//e.currentTarget.date.value;  
             const fileUpload = e.currentTarget.fileUpload.files[0];
@@ -132,7 +131,7 @@ function CreatePost({
             //         })
             //     });
             // }
-              
+            //  const uploadData = 
             //    await uploadBytes(fileRef, fileUpload).then(()=> {
             //         alert("OMGG")
             //     });
@@ -141,8 +140,51 @@ function CreatePost({
             //   `url` is the download URL for 'images/stars.jpg'
           
               // This can be downloaded directly:
+            // const fileDataGet = await addDoc(collection(db, "posts"),{
+            // imageSrc,
+            // });
+            // const uploadFileData =
+            // await uploadBytesResumable(fileRef, fileUpload).then((snapshot) => {
+            // console.log('Uploaded a blob or file!');
+            // alert("MAYVE!??!")
+            // return snapshot;
+            // });
 
-             await getDownloadURL(ref(fileRef))
+            // getDownloadURL(uploadFileData.snapshot.ref).then((downloadURL) => {
+            //     console.log('File available at', downloadURL);
+            // });
+        
+
+            //  await getDownloadURL(ref(fileRef))
+            // .then((url) => {
+            //   // `url` is the download URL for 'images/stars.jpg'
+          
+            //   // This can be downloaded directly:
+            //   const xhr = new XMLHttpRequest();
+            //   xhr.responseType = 'blob';
+            //   xhr.onload = (event) => {
+            //     const blob = xhr.response;
+            //   };
+            //   xhr.open('GET', url);
+            //   xhr.send();
+            //   alert("OMGGG")
+            // })
+            // .catch((error) => {
+            //   // Handle any errors
+            // });
+
+            // uploadBytes(fileRef, fileUpload).then((snapshot) => {
+            //     console.log('Uploaded a blob or file!');
+            // alert("MAYVE!??!")
+            // return snapshot;
+            //   });
+             uploadBytes(fileRef, fileUpload).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            alert("MAYVE!??!")
+            return snapshot;
+              });
+
+             getDownloadURL(ref(fileRef))
             .then((url) => {
               // `url` is the download URL for 'images/stars.jpg'
           
@@ -161,27 +203,16 @@ function CreatePost({
               // Handle any errors
             });
 
-            uploadBytes(fileRef, fileUpload).then((snapshot) => {
-                console.log('Uploaded a blob or file!');
-            alert("MAYVE!??!")
-            return snapshot;
-              });
-
-
-
+        
 
         
                 const docRef = await addDoc(collection(db, "posts"), {
                     caption, 
-                    imageAlt, 
                     userId,
                     userName,
                     date,
                     imageSrc: fileUpload.name,
                     videoSrc,
-                    
-                    
-               
                 });
                 console.log("Document written with ID: ", docRef.id);
                 setPostSucessful(true);
@@ -193,15 +224,16 @@ function CreatePost({
     console.log(userInformation)
     
     useEffect(() => {
-        if(!isLoggedIn && !isLoading) return navigate('/login');
+        if(!isLoggedIn && !isLoading) return navigate('/feed');
     }, [isLoading, isLoggedIn, navigate]);
 
     return(
         <>
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserInformation= {setUserInformation}/> 
         <div className="Post-wrapper">
-            <h1>Create Post</h1>
-            <CreatePostForm createPost={createPost}/>
+            <h1>Create an <b>Archive</b></h1>
+            <CreatePostForm
+             createPost={createPost} />
             {postSucessful && <p>Yay, look at ur profile for new post!</p>}
         </div>
         </>

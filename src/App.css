@@ -1,41 +1,11 @@
+* {
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 header {
   border-bottom: 1px solid black; 
   display:flex; 
   padding:20px; 
-}
-
-nav { 
-  display: flex; 
-  justify-content: flex-end; 
-  margin: 0 auto ; 
-  max-width: 1080px;
-}
-
-nav p { 
-  color: black;
-  font-size: 16px; 
-  font-weight: bold; 
-  margin: 0 ; 
-  margin-left: 40px;
-}
-
-
-.PageWrapper{
-  margin:0 auto; 
-  padding: 25px; 
-  max-width:1080px; 
-}
-
-.PageWrapper-Login{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-  margin:0 auto; 
-  padding: 0px; 
-  max-width:100vw; 
-  color: antiquewhite;
 }
 
 .formElement{
@@ -69,6 +39,45 @@ nav p {
   padding: 10px;
 }
 
+
+@keyframes colorChange {
+  from {left: -250px;}
+  to {left: 250px;}
+}
+
+nav { 
+  display: flex; 
+  justify-content: flex-end; 
+  margin: 0 auto ; 
+  max-width: 1080px;
+}
+
+nav p { 
+  color: black;
+  font-size: 16px; 
+  font-weight: bold; 
+  margin: 0 ; 
+  margin-left: 40px;
+}
+
+.PageWrapper{
+  margin:0 auto; 
+  padding: 25px; 
+  max-width:1080px; 
+}
+
+.PageWrapper-Login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin:0 auto; 
+  padding: 0px; 
+  max-width:100vw; 
+  color: antiquewhite;
+}
+
 .loginPage-backgroundVideo{
   display: flex;
   align-items: center;
@@ -91,9 +100,19 @@ nav p {
   min-height: 300px;
 }
 
+.postFrame{
+  border-radius: 85px;
+  background: rgba(209, 198, 190,0.8);
+  margin: 25px;  
+  min-height: 400px;
+}
+
 .Post-wrapper{
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  padding: 0 auto;
 }
 
 .Post{
@@ -101,4 +120,5 @@ nav p {
   padding: 25px;
   margin: 15px;
   width: 35%;
+
 }

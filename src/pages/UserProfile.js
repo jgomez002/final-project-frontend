@@ -18,10 +18,15 @@ function UserProfilePage({
     return(
         <>
     <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} setUserInformation= {setUserInformation}/> 
-            <div className="PageWrapper">
+            <div className="Post-wrapper">
             <h1> User Profile</h1>
-            <p><strong> Display Name: </strong>{userInformation.displayName}</p>    
+            <p> Hey, <strong>{userInformation.displayName} </strong> here's your user info</p>    
             <p><strong> Email: </strong>{userInformation.email}</p>
+            <br></br>
+            <div>
+            <p><strong>Your Post</strong>
+            {userInformation.password}</p>
+            </div>
         </div>  
         <div></div>
         </>

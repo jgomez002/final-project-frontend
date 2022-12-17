@@ -18,15 +18,6 @@ function Header({isLoggedIn, setIsLoggedIn, setUserInformation}){
     return(
         <header>
         <nav>
-            {isLoggedIn && (<Link to="/">
-              <p> My Profile</p>  
-            </Link>
-            )}
-
-            {isLoggedIn && (<Link to="/search">
-              <p> Search </p>  
-            </Link>
-            )}
 
             {!isLoggedIn && (<Link to ="/login">
               <p> Login</p>
@@ -43,14 +34,18 @@ function Header({isLoggedIn, setIsLoggedIn, setUserInformation}){
             </Link>
             )}
 
-            {isLoggedIn && (<Link to="/shared-archives">
+            {/* {isLoggedIn && (<Link to="/shared-archives">
               <p>Shared Archives</p>
             </Link>
-            )}  
+            )}   */}
              {isLoggedIn && (<Link to="/create-post">
               <p>Create Post</p>
             </Link>
             )}  
+            {isLoggedIn && (<Link to="/">
+              <p> My Profile</p>  
+            </Link>
+            )}
 
             {isLoggedIn && <p onClick= {() => logout()}>Log Out</p>}
         </nav>
