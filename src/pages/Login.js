@@ -55,7 +55,7 @@ function LoginPage({isLoggedIn, setIsLoggedIn, setUserInformation}) {
     </div>
 
             <div className="PageWrapper-Login">
-              <h1> Archive(s)</h1>
+              <h1> Enter the Archive(s)</h1>
               <div className="loginFrame">
               <LoginForm  loginUser={loginUser}/> 
               </div>

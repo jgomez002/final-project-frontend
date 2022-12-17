@@ -6,12 +6,12 @@ function CreatePostForm({createPost}){
             <label htmlFor="caption">Caption</label>
             <input type="text" name ="caption" /> 
             
-            <label htmlFor="files">Upload!</label>
+            <label htmlFor="fileUpload">Upload!</label>
             <input 
             type="file" 
             name ="fileUpload"
             multiple="multiple" 
-            accept="image/png, image/jpeg, image/jpg, image/gif"/> 
+            /> 
             
 
             <button type="submit">Submit</button> 
@@ -20,3 +20,5 @@ function CreatePostForm({createPost}){
 }
 
 export default CreatePostForm; 
+
+// accept="image/png, image/jpeg, image/jpg, image/gif"
