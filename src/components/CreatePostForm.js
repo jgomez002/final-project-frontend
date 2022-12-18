@@ -17,6 +17,7 @@ function CreatePostForm({createPost}){
             type="file" 
             name ="fileUpload"
             multiple="multiple" 
+            accept="image/png, image/jpeg, image/jpg, image/gif"
             /> 
 
             

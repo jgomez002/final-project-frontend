@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CreatePostForm from "../components/CreatePostForm";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import {getStorage, ref} from "firebase/storage"
+import {getStorage, ref, uploadBytes} from "firebase/storage"
 
 function CreatePost({
     app,
@@ -30,17 +30,17 @@ function CreatePost({
             // const imageSrc = ""//e.currentTarget.date.value;
             // const videoSrc = ""//e.currentTarget.date.value;  
             const fileUpload = e.currentTarget.fileUpload.files[0];
-            const fileRef = ref(storage, `${fileUpload.name}`);
+            const fileRef = ref(storage, 'images/' + fileUpload.name);
             console.log(fileRef);
 
             try {
 
-                // await uploadBytes(fileRef, fileUpload).then(
-                //     (snapshot) => {
-                //         console.log("Uploaded a blob or file!", snapshot);
-                //         return snapshot;
-                //     }
-                // );
+                await uploadBytes(fileRef, fileUpload).then(
+                    (snapshot) => {
+                        console.log("Uploaded a blob or file!", snapshot);
+                        return snapshot;
+                    }
+                );
 
             ///Atttenmpt to upload files, in the works :(
             //  uploadBytes(fileRef, fileUpload).then((snapshot) => {
@@ -85,8 +85,8 @@ function CreatePost({
     console.log(userInformation)
     
     useEffect(() => {
-        if(!isLoggedIn && !isLoading) return navigate('/feed');
-    }, [isLoading, isLoggedIn, navigate]);
+        if(postSucessful) return navigate('/feed');
+    }, [postSucessful, navigate]);
 
     return(
         <>
