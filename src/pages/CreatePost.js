@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import CreatePostForm from "../components/CreatePostForm";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import {getStorage, ref, uploadBytes} from "firebase/storage"
+import {getStorage, ref} from "firebase/storage"
+// uploadBytes  : to be used for file upload
 
 function CreatePost({
     app,
@@ -27,20 +28,21 @@ function CreatePost({
             const userName = userInformation.displayName;
             const userId = userInformation.uid;
             const date = e.currentTarget.date.value;
-            // const imageSrc = ""//e.currentTarget.date.value;
-            // const videoSrc = ""//e.currentTarget.date.value;  
+            // const imageSrc = ""//e.currentTarget.imageSrc.value;
+            // const videoSrc = ""//e.currentTarget.VideoSrc.value;  
             const fileUpload = e.currentTarget.fileUpload.files[0];
             const fileRef = ref(storage, 'images/' + fileUpload.name);
             console.log(fileRef);
 
             try {
 
-                await uploadBytes(fileRef, fileUpload).then(
-                    (snapshot) => {
-                        console.log("Uploaded a blob or file!", snapshot);
-                        return snapshot;
-                    }
-                );
+                //in progress file uploading method
+                // await uploadBytes(fileRef, fileUpload).then(
+                //     (snapshot) => {
+                //         console.log("Uploaded a blob or file!", snapshot);
+                //         return snapshot;
+                //     }
+                // );
 
             ///Atttenmpt to upload files, in the works :(
             //  uploadBytes(fileRef, fileUpload).then((snapshot) => {
@@ -96,7 +98,6 @@ function CreatePost({
             <h1>Create an <b>Archive</b></h1>
             <CreatePostForm
              createPost={createPost} />
-            {postSucessful && <p>Yay, look at ur feed for new post!!</p>}
         </div>
         </div>
         </>

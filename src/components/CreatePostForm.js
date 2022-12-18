@@ -29,4 +29,3 @@ function CreatePostForm({createPost}){
 
 export default CreatePostForm; 
 
-// accept="image/png, image/jpeg, image/jpg, image/gif"

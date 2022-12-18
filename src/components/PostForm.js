@@ -5,7 +5,7 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 
 function PostForm({caption, userId, userName, imageSrc, date,imageAlt }) {
-    // working image / file upload code
+    // working on image / file upload code
     const [fileUploaded, setfileUploaded] = useState();
 
     useEffect(() => {
