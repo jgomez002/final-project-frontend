@@ -90,12 +90,14 @@ function CreatePost({
 
     return(
         <>
+        <div className="bgImg PageWrapper-other">
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setUserInformation= {setUserInformation}/> 
         <div className="Post-wrapper">
             <h1>Create an <b>Archive</b></h1>
             <CreatePostForm
              createPost={createPost} />
             {postSucessful && <p>Yay, look at ur feed for new post!!</p>}
+        </div>
         </div>
         </>
     );

@@ -40,6 +40,7 @@ function Feed({
 
     return(
         <>
+         <div className="bgImg">
     <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} setUserInformation= {setUserInformation}/> 
             <div className="PageWrapper">
             {postData.map((post,index) => (
@@ -55,6 +56,7 @@ function Feed({
             </div>
             ))}
         </div>  
+        </div>
         </>
     );
     }

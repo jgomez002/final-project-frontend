@@ -17,7 +17,8 @@ function UserProfilePage({
     }, [isLoading, isLoggedIn, navigate]); 
 
     return(
-        <>
+        <> 
+      <div className="bgImg PageWrapper-other">
     <Header isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} setUserInformation= {setUserInformation}/> 
             <div className="Post-wrapper">
             <h1> User Profile</h1>
@@ -25,12 +26,12 @@ function UserProfilePage({
             <p><strong> Email: </strong>{userInformation.email}</p>
             <br></br>
             <div>
-            <p><strong> <Link to="/create-post"> Create Archive(s) </Link></strong>
+            <p><strong> <Link to="/create-post"> Create an Archive(s) </Link></strong>
 
            </p>
             </div>
         </div>  
-        <div></div>
+        </div>
         </>
     );
 }
